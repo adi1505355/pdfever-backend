@@ -68,6 +68,19 @@ updateUserCountConnect = () => {
   })
 };
 
+app.get('/systemCheck', async(req,res) => {
+      console.log("/uploaded_images/" + 'abc');
+      let uploadFolderPath = "/uploaded_images/" + 'abc';
+      try {
+        mkdirp(uploadFolderPath);
+        //cb(null, uploadFolderPath);
+        res.status(200).send("Noraa Directory created");
+      } catch (ex) {
+        console.log(ex);
+        res.status(500).send("Noraa Directory Failed");
+      }
+})
+
 app.post('/feedback', async (req, res) => {
   try {
     console.log("Feedback ", req.body);
