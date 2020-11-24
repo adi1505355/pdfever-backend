@@ -74,7 +74,17 @@ app.get('/systemCheck', async(req,res) => {
       try {
         mkdirp(uploadFolderPath);
         //cb(null, uploadFolderPath);
-        res.status(200).send("Noraa Directory created");
+        //res.status(200).send("Noraa Directory created");
+        filepath = path.join(__dirname, '../PdfEver-Backend/output/' + 'input5' + '.txt');
+        fs.closeSync(fs.openSync(filepath, 'w')); 
+        fs.writeFile(filepath,'hello world is good',(err)=>{
+          if(err) {
+            console.log("Shit it failed"); 
+            res.status(200).send("lllo failed");
+          } 
+          console.log("OOOOOOO it worked"); 
+          res.status(200).send("lllo created");
+        }); 
       } catch (ex) {
         console.log(ex);
         res.status(500).send("Noraa Directory Failed");
